@@ -1,5 +1,5 @@
 //
-//  ApplicationFlow.swift
+//  LoginViewController.swift
 //  CodeChallange
 //
 //  Created by Kai-Marcel Teuber on 16.09.19.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ApplicationFlow: UINavigationController {
+class LoginViewController: UIViewController {
 
     // MARK: - init
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -23,12 +24,6 @@ class ApplicationFlow: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        presentLoginViewController()
     }
 
     // MARK: - Protocol <#Name#>
@@ -36,10 +31,4 @@ class ApplicationFlow: UINavigationController {
     // MARK: - public
     
     // MARK: - private
-    
-    private func presentLoginViewController() {
-        let loginViewController = LoginViewController()
-        present(loginViewController, animated: true)
-    }
-
 }

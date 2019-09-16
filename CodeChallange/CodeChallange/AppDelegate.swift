@@ -18,8 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Protocol UIApplicationDelegate
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        applicationFlow = ApplicationFlow()
+        
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        applicationFlow = ApplicationFlow(window: window)
         self.window?.rootViewController = applicationFlow
         self.window?.makeKeyAndVisible()
         
