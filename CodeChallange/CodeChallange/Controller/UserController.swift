@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct User {
+    let id: Int
+    let name: String
+}
+
 final class UserController {
     
     // MARK: - init
@@ -37,10 +42,5 @@ final class UserController {
     // MARK: - private
     
     private var user: User?
-    
 }
 
-struct User {
-    let id: Int
-    let name: String
-}
