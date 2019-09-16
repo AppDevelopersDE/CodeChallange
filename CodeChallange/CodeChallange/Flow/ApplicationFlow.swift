@@ -12,6 +12,7 @@ class ApplicationFlow: UINavigationController {
 
     // MARK: - init
     init() {
+        self.userController = UserController()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,9 +38,24 @@ class ApplicationFlow: UINavigationController {
     
     // MARK: - private
     
+    private let userController: UserController
+    
     private func presentLoginViewController() {
-        let loginViewController = LoginViewController()
-        present(loginViewController, animated: true)
+        if ( userController.isLoggedIn) {
+            showPostsTableViewController()
+        } else {
+            let loginViewController = LoginViewController(userController:  userController, didLogin: { [weak self] in
+                self?.showPostsTableViewController()
+                self?.dismiss(animated: true)
+            })
+            
+            present(loginViewController, animated: true)
+        }
+    }
+    
+    private func showPostsTableViewController() {
+        let postsTableViewController = PostsTableViewController()
+        setViewControllers([postsTableViewController], animated: false)
     }
 
 }

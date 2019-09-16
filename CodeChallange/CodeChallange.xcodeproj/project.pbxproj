@@ -14,6 +14,9 @@
 		BA7F8FAC2330153C003AA50A /* ApplicationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F8FAB2330153C003AA50A /* ApplicationFlow.swift */; };
 		BA7F8FB223301723003AA50A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F8FB023301723003AA50A /* LoginViewController.swift */; };
 		BA7F8FB323301723003AA50A /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA7F8FB123301723003AA50A /* LoginViewController.xib */; };
+		BA7F8FB723301A16003AA50A /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F8FB523301A16003AA50A /* PostsTableViewController.swift */; };
+		BA7F8FB823301A16003AA50A /* PostsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BA7F8FB623301A16003AA50A /* PostsTableViewController.xib */; };
+		BA7F8FBB23301E12003AA50A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F8FBA23301E12003AA50A /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		BA7F8FAB2330153C003AA50A /* ApplicationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationFlow.swift; sourceTree = "<group>"; };
 		BA7F8FB023301723003AA50A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BA7F8FB123301723003AA50A /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		BA7F8FB523301A16003AA50A /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		BA7F8FB623301A16003AA50A /* PostsTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostsTableViewController.xib; sourceTree = "<group>"; };
+		BA7F8FBA23301E12003AA50A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		BA7F8F89233014B1003AA50A /* CodeChallange */ = {
 			isa = PBXGroup;
 			children = (
+				BA7F8FB923301E02003AA50A /* Controller */,
 				BA7F8FAE233016FA003AA50A /* ViewController */,
 				BA7F8FAA23301521003AA50A /* Flow */,
 				BA7F8F8A233014B1003AA50A /* AppDelegate.swift */,
@@ -109,6 +116,7 @@
 		BA7F8FAE233016FA003AA50A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BA7F8FB4233019FD003AA50A /* PostsTableViewController */,
 				BA7F8FAF23301703003AA50A /* LoginViewController */,
 			);
 			path = ViewController;
@@ -121,6 +129,23 @@
 				BA7F8FB123301723003AA50A /* LoginViewController.xib */,
 			);
 			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		BA7F8FB4233019FD003AA50A /* PostsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BA7F8FB523301A16003AA50A /* PostsTableViewController.swift */,
+				BA7F8FB623301A16003AA50A /* PostsTableViewController.xib */,
+			);
+			path = PostsTableViewController;
+			sourceTree = "<group>";
+		};
+		BA7F8FB923301E02003AA50A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BA7F8FBA23301E12003AA50A /* UserController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA7F8F95233014B2003AA50A /* LaunchScreen.storyboard in Resources */,
+				BA7F8FB823301A16003AA50A /* PostsTableViewController.xib in Resources */,
 				BA7F8F92233014B2003AA50A /* Assets.xcassets in Resources */,
 				BA7F8FB323301723003AA50A /* LoginViewController.xib in Resources */,
 			);
@@ -225,6 +251,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA7F8FB223301723003AA50A /* LoginViewController.swift in Sources */,
+				BA7F8FB723301A16003AA50A /* PostsTableViewController.swift in Sources */,
+				BA7F8FBB23301E12003AA50A /* UserController.swift in Sources */,
 				BA7F8FAC2330153C003AA50A /* ApplicationFlow.swift in Sources */,
 				BA7F8F8B233014B1003AA50A /* AppDelegate.swift in Sources */,
 			);
