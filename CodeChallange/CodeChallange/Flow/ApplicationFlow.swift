@@ -32,8 +32,6 @@ class ApplicationFlow: UINavigationController {
         presentLoginViewController()
     }
 
-    // MARK: - Protocol <#Name#>
-    
     // MARK: - public
     
     // MARK: - private
@@ -54,7 +52,7 @@ class ApplicationFlow: UINavigationController {
     }
     
     private func showPostsTableViewController() {
-        let postsTableViewController = PostsTableViewController()
+        let postsTableViewController = PostsTableViewController(userController: userController)
         setViewControllers([postsTableViewController], animated: false)
     }
 

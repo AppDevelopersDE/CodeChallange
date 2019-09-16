@@ -30,6 +30,10 @@ final class UserController {
     public var isLoggedIn: Bool {
         return user != nil
     }
+    
+    public var userId: Int {
+        return user?.id ?? -1
+    }
 
     public func login(id: Int, name: String) {
         user = User(id: id, name: name)

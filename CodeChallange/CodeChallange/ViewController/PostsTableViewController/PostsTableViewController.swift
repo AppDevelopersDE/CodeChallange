@@ -12,7 +12,8 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init() {
+    init(userController: UserController) {
+        self.networking = Networking(webservice: WebService(), userController: userController)
         super.init(style: .grouped)
     }
     
@@ -25,6 +26,17 @@ class PostsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Posts"
+        
+        setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        networking.getUserPosts(success: { posts in
+            NSLog("we found %i posts", posts.count)
+        }) {
+            NSLog("Somethong failed")
+        }
     }
 
     // MARK: - Protocol UITableDataSource
@@ -46,5 +58,11 @@ class PostsTableViewController: UITableViewController {
     // MARK: - public
     
     // MARK: - private
+    
+    private let networking: Networking
+    
+    private func setupTableView() {
+        
+    }
     
 }
