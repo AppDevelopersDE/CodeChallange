@@ -7,20 +7,26 @@
 //
 
 import Foundation
+import UIKit
 
 public struct PostCellViewModel {
     
     // MARK: - init
     
     init(model: Post) {
-        
+        self.body = model.body
+        self.title = model.title
+        // TODO fav state
+        self.favoriteImage = UIImage(imageLiteralResourceName: "favOn")
     }
     
     // MARK: - overrides
     
-    // MARK: - Protocol <#Name#>
-    
     // MARK: - public
+    
+    let title: String
+    let body: String
+    let favoriteImage: UIImage
     
     // MARK: - private
     

@@ -16,7 +16,6 @@ class PostsTableViewController: UITableViewController {
         userController: UserController
         ) {
         self.viewModel = PostsViewModel(networking: networking)
-        self.cellViewModels = []
         super.init(style: .plain)
     }
     
@@ -35,8 +34,7 @@ class PostsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        viewModel.getCellViewModels { [weak self] cellViewModels in
-            self?.cellViewModels = cellViewModels
+        viewModel.loadCellViewModels { [weak self] in
             self?.tableView.reloadData()
         }
     }
@@ -48,12 +46,18 @@ class PostsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellViewModels.count
+        return viewModel.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "FallBackCell")
-        cell.textLabel?.text = "Fallback Cell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else {
+            fatalError("failed tp find matching cell - stop somthing is wrong")
+        }
+        
+        let cellViewModel = viewModel.getPostCellViewModel(at: indexPath.row)
+        cell.configure(viewModel: cellViewModel, didTapFavoriteButton: {
+            NSLog("update model and notofy viewMdoel about the change")
+        })
         return cell
     }
 
@@ -62,10 +66,14 @@ class PostsTableViewController: UITableViewController {
     // MARK: - private
     
     private let viewModel: PostsViewModel
-    private var cellViewModels: [PostCellViewModel]
+    
     
     private func setupTableView() {
         
+        tableView.estimatedRowHeight = 65.0
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        tableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "PostTableViewCell")
     }
     
 }

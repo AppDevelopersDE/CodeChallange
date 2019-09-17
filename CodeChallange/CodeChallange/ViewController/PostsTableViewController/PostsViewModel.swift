@@ -14,6 +14,7 @@ final public class PostsViewModel {
     
     init(networking: Networking) {
         self.networking = networking
+        self.cellViewModels = []
     }
     
     // MARK: - overrides
@@ -22,20 +23,30 @@ final public class PostsViewModel {
     
     // MARK: - public
     
-    public func getCellViewModels(completion: @escaping ([PostCellViewModel]) -> Void) {
+    public var count: Int {
+        return cellViewModels.count
+    }
+    
+    public func getPostCellViewModel(at index: Int) -> PostCellViewModel {
+        return cellViewModels[index]
+    }
+    
+    public func loadCellViewModels(completion: @escaping () -> Void) {
         networking.getUserPosts(
-            success: { (postModels) in
-                completion(postModels.map { PostCellViewModel(model: $0) })
-        },
+            success: { [weak self] (postModels) in
+                self?.cellViewModels = postModels.map { PostCellViewModel(model: $0) }
+                completion()
+            },
             failed: {
-                NSLog("We have no data - use an empty array for the moment")
-                completion([])
-            }
+                NSLog("Somethong went wrong - we do not handle this at the moment")
+                completion()
+        }
         )
     }
     
     // MARK: - private
     
     private let networking: Networking
-    
+    private var cellViewModels: [PostCellViewModel]
+
 }
