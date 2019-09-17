@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA254E1B233184D900BDDDD0 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA254E1A233184D900BDDDD0 /* PostsViewModel.swift */; };
+		BA254E1E2331865900BDDDD0 /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA254E1D2331865900BDDDD0 /* PostCellViewModel.swift */; };
 		BA7F8F8B233014B1003AA50A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F8F8A233014B1003AA50A /* AppDelegate.swift */; };
 		BA7F8F92233014B2003AA50A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA7F8F91233014B2003AA50A /* Assets.xcassets */; };
 		BA7F8F95233014B2003AA50A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA7F8F93233014B2003AA50A /* LaunchScreen.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA254E1A233184D900BDDDD0 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		BA254E1D2331865900BDDDD0 /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
 		BA7F8F87233014B1003AA50A /* CodeChallange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeChallange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA7F8F8A233014B1003AA50A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA7F8F91233014B2003AA50A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA254E1C2331864700BDDDD0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BA254E1D2331865900BDDDD0 /* PostCellViewModel.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		BA7F8F7E233014B1003AA50A = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +157,8 @@
 		BA7F8FB4233019FD003AA50A /* PostsTableViewController */ = {
 			isa = PBXGroup;
 			children = (
+				BA254E1C2331864700BDDDD0 /* Cells */,
+				BA254E1A233184D900BDDDD0 /* PostsViewModel.swift */,
 				BA7F8FB523301A16003AA50A /* PostsTableViewController.swift */,
 				BA7F8FB623301A16003AA50A /* PostsTableViewController.xib */,
 			);
@@ -288,6 +302,8 @@
 				BA7F8FBB23301E12003AA50A /* UserController.swift in Sources */,
 				BA7F8FC02330226E003AA50A /* Resource.swift in Sources */,
 				BA7F8FAC2330153C003AA50A /* ApplicationFlow.swift in Sources */,
+				BA254E1B233184D900BDDDD0 /* PostsViewModel.swift in Sources */,
+				BA254E1E2331865900BDDDD0 /* PostCellViewModel.swift in Sources */,
 				BA7F8FC923302C81003AA50A /* Endpoints.swift in Sources */,
 				BA7F8F8B233014B1003AA50A /* AppDelegate.swift in Sources */,
 				BA7F8FCC2330321F003AA50A /* Post.swift in Sources */,

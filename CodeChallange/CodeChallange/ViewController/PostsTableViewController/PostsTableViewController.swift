@@ -12,9 +12,12 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init(userController: UserController) {
-        self.networking = Networking(webservice: WebService(), userController: userController)
-        super.init(style: .grouped)
+    init(networking: Networking,
+        userController: UserController
+        ) {
+        self.viewModel = PostsViewModel(networking: networking)
+        self.cellViewModels = []
+        super.init(style: .plain)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,10 +35,9 @@ class PostsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        networking.getUserPosts(success: { posts in
-            NSLog("we found %i posts", posts.count)
-        }) {
-            NSLog("Somethong failed")
+        viewModel.getCellViewModels { [weak self] cellViewModels in
+            self?.cellViewModels = cellViewModels
+            self?.tableView.reloadData()
         }
     }
 
@@ -46,7 +48,7 @@ class PostsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cellViewModels.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -59,7 +61,8 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - private
     
-    private let networking: Networking
+    private let viewModel: PostsViewModel
+    private var cellViewModels: [PostCellViewModel]
     
     private func setupTableView() {
         

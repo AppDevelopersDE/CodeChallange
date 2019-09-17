@@ -13,6 +13,8 @@ class ApplicationFlow: UINavigationController {
     // MARK: - init
     init() {
         self.userController = UserController()
+        self.networking = Networking(webservice: WebService(), userController: userController)
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -37,14 +39,16 @@ class ApplicationFlow: UINavigationController {
     // MARK: - private
     
     private let userController: UserController
+    private let networking: Networking
     
     private func presentLoginViewController() {
         if ( userController.isLoggedIn) {
             showPostsTableViewController()
         } else {
             let loginViewController = LoginViewController(userController:  userController, didLogin: { [weak self] in
-                self?.showPostsTableViewController()
-                self?.dismiss(animated: true)
+                self?.dismiss(animated: true, completion: {
+                    self?.showPostsTableViewController()
+                })
             })
             
             present(loginViewController, animated: true)
@@ -52,8 +56,12 @@ class ApplicationFlow: UINavigationController {
     }
     
     private func showPostsTableViewController() {
-        let postsTableViewController = PostsTableViewController(userController: userController)
+        let postsTableViewController = PostsTableViewController(networking: networking, userController: userController)
         setViewControllers([postsTableViewController], animated: false)
+    }
+    
+    private func showCommentsViewController(post: Int) {
+        
     }
 
 }
