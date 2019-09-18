@@ -12,8 +12,8 @@ final public class PostsViewModel {
     
     // MARK: - init
     
-    init(networking: Networking) {
-        self.networking = networking
+    init(dataProvider: PostsProviding) {
+        self.dataProvider = dataProvider
         self.cellViewModels = []
     }
     
@@ -32,7 +32,7 @@ final public class PostsViewModel {
     }
     
     public func loadCellViewModels(completion: @escaping () -> Void) {
-        networking.getUserPosts(
+        dataProvider.getPosts(
             success: { [weak self] (postModels) in
                 self?.cellViewModels = postModels.map { PostCellViewModel(model: $0) }
                 completion()
@@ -46,7 +46,7 @@ final public class PostsViewModel {
     
     // MARK: - private
     
-    private let networking: Networking
+    private let dataProvider: PostsProviding
     private var cellViewModels: [PostCellViewModel]
 
 }

@@ -8,7 +8,13 @@
 
 import Foundation
 
-final public class Networking {
+protocol PostsProviding {
+    
+    func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void)
+    
+}
+
+final public class Networking: PostsProviding {
     
     // MARK: - init
     
@@ -21,7 +27,7 @@ final public class Networking {
     
     // MARK: - public
     
-    public func getUserPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
+    public func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
         guard let userID = userController.userId else {
             failed()
             return

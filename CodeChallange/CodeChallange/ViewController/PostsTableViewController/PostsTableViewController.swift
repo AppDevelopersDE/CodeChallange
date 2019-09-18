@@ -12,8 +12,8 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init(networking: Networking) {
-        self.viewModel = PostsViewModel(networking: networking)
+    init(dataProvider: PostsProviding) {
+        self.viewModel = PostsViewModel(dataProvider: dataProvider)
         super.init(style: .plain)
     }
     
