@@ -14,7 +14,7 @@ class ApplicationFlow: UINavigationController {
     init() {
         self.userController = UserController()
         self.postNetworkPorviding = Networking(webservice: WebService(), userController: userController)
-        // Todo load fav from disk
+        // Todo load favorites from disk
         self.favoritesProviding = Favorites(favorites: [ Post(userId: 1, id: 1, title: "Testdata", body: "Das ist ein Test") ])
         super.init(nibName: nil, bundle: nil)
     }
@@ -45,11 +45,11 @@ class ApplicationFlow: UINavigationController {
     
     private func presentLoginViewController() {
         if ( userController.isLoggedIn) {
-            showPostsTableViewController()
+            presentTabBarController()
         } else {
             let loginViewController = LoginViewController(userController:  userController, didLogin: { [weak self] in
                 self?.dismiss(animated: true, completion: {
-                    self?.showPostsTableViewController()
+                    self?.presentTabBarController()
                 })
             })
             
@@ -57,13 +57,23 @@ class ApplicationFlow: UINavigationController {
         }
     }
     
-    private func showPostsTableViewController() {
-        let postsTableViewController = PostsTableViewController(dataProvider: favoritesProviding)
-        setViewControllers([postsTableViewController], animated: false)
-    }
-    
-    private func showCommentsViewController(post: Int) {
+    private func presentTabBarController() {
+        let postsTableViewController = PostsTableViewController(dataProvider: postNetworkPorviding)
+        postsTableViewController.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(imageLiteralResourceName: "tabIconPosts"), selectedImage: nil)
         
+        let favoritesTableViewController = PostsTableViewController(dataProvider: favoritesProviding)
+        favoritesTableViewController.tabBarItem = UITabBarItem(title: "Fovorites", image: UIImage(imageLiteralResourceName: "tabIconFav"), selectedImage: nil)
+        
+        let postNavigationController = UINavigationController(rootViewController: postsTableViewController)
+        let favoritesNavigationControler = UINavigationController(rootViewController: favoritesTableViewController)
+        
+        let tabbarController = UITabBarController(nibName: nil, bundle: nil)
+        tabbarController.viewControllers = [postNavigationController, favoritesNavigationControler]
+
+        guard let window = UIApplication.shared.delegate?.window else {
+            fatalError("window not fond - stop")
+        }
+        window?.rootViewController = tabbarController
     }
 
 }
