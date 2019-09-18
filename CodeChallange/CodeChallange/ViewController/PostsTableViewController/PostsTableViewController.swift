@@ -12,9 +12,9 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init(userController: UserController) {
-        self.networking = Networking(webservice: WebService(), userController: userController)
-        super.init(style: .grouped)
+    init(networking: Networking) {
+        self.viewModel = PostsViewModel(networking: networking)
+        super.init(style: .plain)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -32,10 +32,8 @@ class PostsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        networking.getUserPosts(success: { posts in
-            NSLog("we found %i posts", posts.count)
-        }) {
-            NSLog("Somethong failed")
+        viewModel.loadCellViewModels { [weak self] in
+            self?.tableView.reloadData()
         }
     }
 
@@ -46,12 +44,18 @@ class PostsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return viewModel.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "FallBackCell")
-        cell.textLabel?.text = "Fallback Cell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else {
+            fatalError("failed tp find matching cell - stop somthing is wrong")
+        }
+        
+        let cellViewModel = viewModel.getPostCellViewModel(at: indexPath.row)
+        cell.configure(viewModel: cellViewModel, didTapFavoriteButton: {
+            NSLog("update model and notofy viewMdoel about the change")
+        })
         return cell
     }
 
@@ -59,10 +63,15 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - private
     
-    private let networking: Networking
+    private let viewModel: PostsViewModel
+    
     
     private func setupTableView() {
         
+        tableView.estimatedRowHeight = 65.0
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        tableView.register(UINib(nibName: "PostTableViewCell", bundle: nil), forCellReuseIdentifier: "PostTableViewCell")
     }
     
 }
