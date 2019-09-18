@@ -12,8 +12,9 @@ final public class PostsViewModel {
     
     // MARK: - init
     
-    init(networking: Networking) {
-        self.networking = networking
+    init(dataProvider: PostsProviding, favoritesProvider: MutatingPostProviding? = nil) {
+        self.dataProvider = dataProvider
+        self.favoritesProvider = favoritesProvider
         self.cellViewModels = []
     }
     
@@ -32,9 +33,12 @@ final public class PostsViewModel {
     }
     
     public func loadCellViewModels(completion: @escaping () -> Void) {
-        networking.getUserPosts(
+        dataProvider.getPosts(
             success: { [weak self] (postModels) in
-                self?.cellViewModels = postModels.map { PostCellViewModel(model: $0) }
+                guard let self = self else {
+                    fatalError()
+                }
+                self.cellViewModels = postModels.map { PostCellViewModel(model: $0, isFavorite: self.favoritesProvider?.contains($0) ?? false)}
                 completion()
             },
             failed: {
@@ -44,9 +48,41 @@ final public class PostsViewModel {
         )
     }
     
+    public func toggleFavorite(_ viewModel: PostCellViewModel) {
+        guard let favoritesProvider = favoritesProvider,
+            let index = cellViewModels.firstIndex(of: viewModel) else {
+            return
+        }
+        
+        var modifyedViewModel = viewModel
+        
+        let post = viewModel.model
+        if favoritesProvider.contains(post) {
+            deleteFavorite(post)
+            modifyedViewModel.isFavorite = false
+        } else {
+            addFavorite(post)
+            modifyedViewModel.isFavorite = true
+        }
+
+        cellViewModels[index] = modifyedViewModel
+    }
+    
     // MARK: - private
     
-    private let networking: Networking
+    private let dataProvider: PostsProviding
+    private let favoritesProvider: MutatingPostProviding?
+
     private var cellViewModels: [PostCellViewModel]
+
+    private func addFavorite(_ post: Post) {
+        favoritesProvider?.addPost(post)
+        NSLog("reload tableView")
+    }
+    
+    private func deleteFavorite(_ post: Post) {
+        favoritesProvider?.deletePost(post)
+        NSLog("reload tableView")
+    }
 
 }

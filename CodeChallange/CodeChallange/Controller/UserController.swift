@@ -31,8 +31,8 @@ final class UserController {
         return user != nil
     }
     
-    public var userId: Int {
-        return user?.id ?? -1
+    public var userId: Int? {
+        return user?.id
     }
 
     public func login(id: Int, name: String) {

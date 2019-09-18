@@ -8,11 +8,21 @@
 
 import Foundation
 
-//struct Post: Codable {
-//    let id: Int
-//}
+protocol MutatingPostProviding: PostsProviding {
+    
+    func addPost(_ post: Post)
+    func deletePost(_ post: Post)
+    func contains(_ post: Post) -> Bool
+    
+}
 
-final public class Networking {
+protocol PostsProviding {
+    
+    func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void)
+    
+}
+
+final public class Networking: PostsProviding {
     
     // MARK: - init
     
@@ -25,8 +35,12 @@ final public class Networking {
     
     // MARK: - public
     
-    public func getUserPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
-        let endpoint = CommunicationEndpoints.postsByUser(5)
+    public func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
+        guard let userID = userController.userId else {
+            failed()
+            return
+        }
+        let endpoint = CommunicationEndpoints.postsByUser(userID)
         guard let resource = Resource<[Post]>(url: endpoint.url) else {
             failed()
             return

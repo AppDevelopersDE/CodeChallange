@@ -12,8 +12,8 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init(networking: Networking) {
-        self.viewModel = PostsViewModel(networking: networking)
+    init(dataProvider: PostsProviding, favoritesProvider: MutatingPostProviding? = nil) {
+        self.viewModel = PostsViewModel(dataProvider: dataProvider, favoritesProvider: favoritesProvider)
         super.init(style: .plain)
     }
     
@@ -49,12 +49,16 @@ class PostsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else {
-            fatalError("failed tp find matching cell - stop somthing is wrong")
+            fatalError("failed to find matching cell")
         }
         
         let cellViewModel = viewModel.getPostCellViewModel(at: indexPath.row)
-        cell.configure(viewModel: cellViewModel, didTapFavoriteButton: {
-            NSLog("update model and notofy viewMdoel about the change")
+        cell.configure(viewModel: cellViewModel, didTapFavoriteButton: { [weak self] in
+            guard let self = self else {
+                fatalError("somethng went wrong")
+            }
+            self.viewModel.toggleFavorite(cellViewModel)
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
         })
         return cell
     }
@@ -64,7 +68,6 @@ class PostsTableViewController: UITableViewController {
     // MARK: - private
     
     private let viewModel: PostsViewModel
-    
     
     private func setupTableView() {
         

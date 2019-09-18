@@ -36,7 +36,8 @@ class LoginViewController: UIViewController {
     // MARK: - private
     
     @IBOutlet private weak var loginButton: UIButton!
-
+    @IBOutlet weak var userIdTextFiled: UITextField!
+    
     private let userController: UserController
     private let didLogin: () -> Void
 
@@ -46,7 +47,14 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func didHitLoginButton() {
-        userController.login(id: 100, name: "Test a lot")
+        guard let idString = userIdTextFiled.text,
+            let userId = Int(idString) else {
+            NSLog("No interger found in Textfiled")
+            return
+        }
+        
+        
+        userController.login(id: userId, name: "Mustermann")
         didLogin()
     }
     

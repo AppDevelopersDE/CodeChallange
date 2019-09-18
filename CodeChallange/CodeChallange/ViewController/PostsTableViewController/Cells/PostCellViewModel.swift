@@ -9,25 +9,33 @@
 import Foundation
 import UIKit
 
-public struct PostCellViewModel {
+public struct PostCellViewModel: Equatable {
     
     // MARK: - init
     
-    init(model: Post) {
+    init(model: Post, isFavorite: Bool) {
+        self.model = model
         self.body = model.body
         self.title = model.title
-        // TODO fav state
-        self.favoriteImage = UIImage(imageLiteralResourceName: "favOn")
+        self.isFavorite = isFavorite
     }
     
     // MARK: - overrides
     
     // MARK: - public
     
+    let model: Post
     let title: String
     let body: String
-    let favoriteImage: UIImage
+    
+    var isFavorite: Bool
+    
+    var favoriteImage: UIImage {
+        return UIImage(imageLiteralResourceName: isFavorite ? "favOn" : "favOff")
+    }
     
     // MARK: - private
+    
+    
     
 }

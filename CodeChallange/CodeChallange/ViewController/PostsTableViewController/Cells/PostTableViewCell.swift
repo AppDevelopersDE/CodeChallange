@@ -26,8 +26,6 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    // MARK: - Protocol <#Name#>
-    
     // MARK: - public
     
     public func configure(viewModel: PostCellViewModel, didTapFavoriteButton: @escaping () -> Void) {

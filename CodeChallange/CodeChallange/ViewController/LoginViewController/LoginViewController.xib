@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="CodeChallange" customModuleProvider="target">
             <connections>
                 <outlet property="loginButton" destination="0pN-hW-WF3" id="hqg-Tg-ITM"/>
+                <outlet property="userIdTextFiled" destination="bwm-DE-sAl" id="AXb-7r-9t4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
