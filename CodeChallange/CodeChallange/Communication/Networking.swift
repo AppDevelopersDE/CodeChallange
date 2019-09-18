@@ -12,6 +12,7 @@ protocol MutatingPostProviding: PostsProviding {
     
     func addPost(_ post: Post)
     func deletePost(_ post: Post)
+    func contains(_ post: Post) -> Bool
     
 }
 

@@ -12,8 +12,12 @@ final public class PostsViewModel {
     
     // MARK: - init
     
-    init(dataProvider: PostsProviding) {
+    init(
+        dataProvider: PostsProviding,
+        favoritesProvider: MutatingPostProviding? = nil
+        ) {
         self.dataProvider = dataProvider
+        self.favoritesProvider = favoritesProvider
         self.cellViewModels = []
     }
     
@@ -34,7 +38,10 @@ final public class PostsViewModel {
     public func loadCellViewModels(completion: @escaping () -> Void) {
         dataProvider.getPosts(
             success: { [weak self] (postModels) in
-                self?.cellViewModels = postModels.map { PostCellViewModel(model: $0) }
+                guard let self = self else {
+                    fatalError()
+                }
+                self.cellViewModels = postModels.map { PostCellViewModel(model: $0, isFavorite: self.favoritesProvider?.contains($0) ?? false)}
                 completion()
             },
             failed: {
@@ -47,6 +54,8 @@ final public class PostsViewModel {
     // MARK: - private
     
     private let dataProvider: PostsProviding
+    private let favoritesProvider: MutatingPostProviding?
+
     private var cellViewModels: [PostCellViewModel]
 
 }

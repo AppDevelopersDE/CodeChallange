@@ -58,7 +58,7 @@ class ApplicationFlow: UINavigationController {
     }
     
     private func presentTabBarController() {
-        let postsTableViewController = PostsTableViewController(dataProvider: postNetworkPorviding)
+        let postsTableViewController = PostsTableViewController(dataProvider: postNetworkPorviding, favoritesProvider: favoritesProviding)
         postsTableViewController.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(imageLiteralResourceName: "tabIconPosts"), selectedImage: nil)
         
         let favoritesTableViewController = PostsTableViewController(dataProvider: favoritesProviding)

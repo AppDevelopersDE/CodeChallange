@@ -13,11 +13,11 @@ public struct PostCellViewModel {
     
     // MARK: - init
     
-    init(model: Post) {
+    init(model: Post, isFavorite: Bool) {
         self.body = model.body
         self.title = model.title
         // TODO fav state
-        self.favoriteImage = UIImage(imageLiteralResourceName: "favOn")
+        self.favoriteImage = UIImage(imageLiteralResourceName: isFavorite ? "favOn" : "favOff")
     }
     
     // MARK: - overrides

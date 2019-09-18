@@ -38,6 +38,10 @@ final public class Favorites: MutatingPostProviding {
         }
     }
     
+    func contains(_ post: Post) -> Bool {
+        return favorites.firstIndex(of: post) != nil
+    }
+    
     // MARK: - public
     
     // MARK: - private

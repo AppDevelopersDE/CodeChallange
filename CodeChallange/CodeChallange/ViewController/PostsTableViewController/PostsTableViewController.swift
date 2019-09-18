@@ -12,8 +12,11 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init(dataProvider: PostsProviding) {
-        self.viewModel = PostsViewModel(dataProvider: dataProvider)
+    init(
+        dataProvider: PostsProviding,
+        favoritesProvider: MutatingPostProviding? = nil
+        ) {
+        self.viewModel = PostsViewModel(dataProvider: dataProvider, favoritesProvider: favoritesProvider)
         super.init(style: .plain)
     }
     
@@ -64,7 +67,6 @@ class PostsTableViewController: UITableViewController {
     // MARK: - private
     
     private let viewModel: PostsViewModel
-    
     
     private func setupTableView() {
         
