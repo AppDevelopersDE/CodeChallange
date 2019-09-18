@@ -14,7 +14,7 @@ class ApplicationFlow: UINavigationController {
     init() {
         self.userController = UserController()
         self.networking = Networking(webservice: WebService(), userController: userController)
-        
+        self.favoritesProviding = Favorites(favorites: [ Post(userId: 1, id: 1, title: "Testdata", body: "Das ist ein Test") ])
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,6 +40,7 @@ class ApplicationFlow: UINavigationController {
     
     private let userController: UserController
     private let networking: Networking
+    private let favoritesProviding: Favorites
     
     private func presentLoginViewController() {
         if ( userController.isLoggedIn) {
@@ -56,7 +57,7 @@ class ApplicationFlow: UINavigationController {
     }
     
     private func showPostsTableViewController() {
-        let postsTableViewController = PostsTableViewController(dataProvider: networking)
+        let postsTableViewController = PostsTableViewController(dataProvider: favoritesProviding)
         setViewControllers([postsTableViewController], animated: false)
     }
     

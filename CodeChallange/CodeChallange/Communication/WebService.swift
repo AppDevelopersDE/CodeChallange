@@ -14,8 +14,6 @@ final class WebService {
     
     // MARK: - overrides
     
-    // MARK: - Protocol <#Name#>
-    
     // MARK: - public
     
     func load<B>(resource: Resource<B>, completion: @escaping (B) -> Void, failed:((Resource<B>) -> Void)? = nil ) {

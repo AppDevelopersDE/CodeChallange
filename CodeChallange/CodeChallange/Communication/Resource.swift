@@ -26,8 +26,6 @@ struct Resource<B: Decodable> {
 
     // MARK: - overrides
     
-    // MARK: - Protocol s
-    
     // MARK: - public
     
     public let url: URL
