@@ -8,13 +8,12 @@
 
 import Foundation
 
-final public class Favorites: PostsProviding {
+final public class Favorites: MutatingPostProviding {
     
     // MARK: - init
     
     init(favorites: [Post]) {
         self.favorites = favorites
-        
     }
     
     // MARK: - overrides
@@ -23,6 +22,20 @@ final public class Favorites: PostsProviding {
     
     func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
         success(favorites)
+    }
+    
+    // MARK: - Protocol PostsProviding
+
+    func addPost(_ post: Post) {
+        if !favorites.contains(post) {
+            favorites.append(post)
+        }
+    }
+    
+    func deletePost(_ post: Post) {
+        if let index = favorites.firstIndex(of: post) {
+            favorites.remove(at: index)
+        }
     }
     
     // MARK: - public

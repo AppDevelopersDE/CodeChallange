@@ -13,7 +13,8 @@ class ApplicationFlow: UINavigationController {
     // MARK: - init
     init() {
         self.userController = UserController()
-        self.networking = Networking(webservice: WebService(), userController: userController)
+        self.postNetworkPorviding = Networking(webservice: WebService(), userController: userController)
+        // Todo load fav from disk
         self.favoritesProviding = Favorites(favorites: [ Post(userId: 1, id: 1, title: "Testdata", body: "Das ist ein Test") ])
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,7 +40,7 @@ class ApplicationFlow: UINavigationController {
     // MARK: - private
     
     private let userController: UserController
-    private let networking: Networking
+    private let postNetworkPorviding: Networking
     private let favoritesProviding: Favorites
     
     private func presentLoginViewController() {

@@ -8,6 +8,13 @@
 
 import Foundation
 
+protocol MutatingPostProviding: PostsProviding {
+    
+    func addPost(_ post: Post)
+    func deletePost(_ post: Post)
+    
+}
+
 protocol PostsProviding {
     
     func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void)
