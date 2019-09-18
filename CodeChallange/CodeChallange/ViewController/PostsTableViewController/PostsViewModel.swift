@@ -12,10 +12,7 @@ final public class PostsViewModel {
     
     // MARK: - init
     
-    init(
-        dataProvider: PostsProviding,
-        favoritesProvider: MutatingPostProviding? = nil
-        ) {
+    init(dataProvider: PostsProviding, favoritesProvider: MutatingPostProviding? = nil) {
         self.dataProvider = dataProvider
         self.favoritesProvider = favoritesProvider
         self.cellViewModels = []

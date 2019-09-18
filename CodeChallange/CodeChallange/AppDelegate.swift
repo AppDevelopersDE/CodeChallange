@@ -16,13 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - overrides
     
     // MARK: - Protocol UIApplicationDelegate
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        applicationFlow = ApplicationFlow()
+        // we need to move this to a delay or app gets killed if things take to long
+        setupComponents()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = applicationFlow
+        self.window?.rootViewController = ApplicationFlow(userController: userController, networkingProvider: networkingProvider, favoritesProvider: favoritesProvider)
         self.window?.makeKeyAndVisible()
         
         // Override point for customization after application launch.
@@ -58,6 +59,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - private
     
     private var applicationFlow: ApplicationFlow!
+    private var userController: UserController!
+    private var webservice: WebService!
+    private var networkingProvider: Networking!
+    private var favoritesProvider: Favorites!
+    
+    private func setupComponents() {
+        self.userController = UserController()
+        self.webservice = WebService()
+        self.networkingProvider = Networking(webservice: webservice, userController: userController)
+        self.favoritesProvider = Favorites(favorites: [])
+    }
 
 
 }

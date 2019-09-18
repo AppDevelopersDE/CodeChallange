@@ -12,10 +12,7 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init(
-        dataProvider: PostsProviding,
-        favoritesProvider: MutatingPostProviding? = nil
-        ) {
+    init(dataProvider: PostsProviding, favoritesProvider: MutatingPostProviding? = nil) {
         self.viewModel = PostsViewModel(dataProvider: dataProvider, favoritesProvider: favoritesProvider)
         super.init(style: .plain)
     }

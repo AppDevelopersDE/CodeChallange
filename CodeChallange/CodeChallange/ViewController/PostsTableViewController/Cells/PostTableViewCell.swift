@@ -26,8 +26,6 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    // MARK: - Protocol <#Name#>
-    
     // MARK: - public
     
     public func configure(viewModel: PostCellViewModel, didTapFavoriteButton: @escaping () -> Void) {
@@ -35,10 +33,6 @@ class PostTableViewCell: UITableViewCell {
         bodyLabel.text = viewModel.body
         favoriteButton.setImage(viewModel.favoriteImage, for: .normal)
         self.didTapFavoriteButton = didTapFavoriteButton
-    }
-    
-    public func updateFavoriteState(viewModel: PostCellViewModel) {
-        favoriteButton.setImage(viewModel.favoriteImage, for: .normal)
     }
     
     // MARK: - private

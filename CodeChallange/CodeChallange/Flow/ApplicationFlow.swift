@@ -11,11 +11,10 @@ import UIKit
 class ApplicationFlow: UINavigationController {
 
     // MARK: - init
-    init() {
-        self.userController = UserController()
-        self.postNetworkPorviding = Networking(webservice: WebService(), userController: userController)
-        // Todo load favorites from disk
-        self.favoritesProviding = Favorites(favorites: [])
+    init(userController: UserController, networkingProvider: Networking, favoritesProvider: Favorites) {
+        self.userController = userController
+        self.networkingProvider = networkingProvider
+        self.favoritesProvider = favoritesProvider
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,8 +39,8 @@ class ApplicationFlow: UINavigationController {
     // MARK: - private
     
     private let userController: UserController
-    private let postNetworkPorviding: Networking
-    private let favoritesProviding: Favorites
+    private let networkingProvider: Networking
+    private let favoritesProvider: Favorites
     
     private func presentLoginViewController() {
         if ( userController.isLoggedIn) {
@@ -58,10 +57,10 @@ class ApplicationFlow: UINavigationController {
     }
     
     private func presentTabBarController() {
-        let postsTableViewController = PostsTableViewController(dataProvider: postNetworkPorviding, favoritesProvider: favoritesProviding)
+        let postsTableViewController = PostsTableViewController(dataProvider: networkingProvider, favoritesProvider: favoritesProvider)
         postsTableViewController.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(imageLiteralResourceName: "tabIconPosts"), selectedImage: nil)
         
-        let favoritesTableViewController = PostsTableViewController(dataProvider: favoritesProviding)
+        let favoritesTableViewController = PostsTableViewController(dataProvider: favoritesProvider)
         favoritesTableViewController.tabBarItem = UITabBarItem(title: "Fovorites", image: UIImage(imageLiteralResourceName: "tabIconFav"), selectedImage: nil)
         
         let postNavigationController = UINavigationController(rootViewController: postsTableViewController)
