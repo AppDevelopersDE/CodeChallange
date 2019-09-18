@@ -42,6 +42,11 @@ final public class Favorites: MutatingPostProviding {
         return favorites.firstIndex(of: post) != nil
     }
     
+    func jsonData() -> Data? {
+        let jsonEncoder = JSONEncoder()
+        return try? jsonEncoder.encode(favorites)
+    }
+    
     // MARK: - public
     
     // MARK: - private
