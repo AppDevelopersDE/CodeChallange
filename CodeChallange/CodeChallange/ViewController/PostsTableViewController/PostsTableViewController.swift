@@ -12,9 +12,7 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init(networking: Networking,
-        userController: UserController
-        ) {
+    init(networking: Networking) {
         self.viewModel = PostsViewModel(networking: networking)
         super.init(style: .plain)
     }

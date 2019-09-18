@@ -56,7 +56,7 @@ class ApplicationFlow: UINavigationController {
     }
     
     private func showPostsTableViewController() {
-        let postsTableViewController = PostsTableViewController(networking: networking, userController: userController)
+        let postsTableViewController = PostsTableViewController(networking: networking)
         setViewControllers([postsTableViewController], animated: false)
     }
     
