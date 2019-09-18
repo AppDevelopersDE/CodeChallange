@@ -8,10 +8,6 @@
 
 import Foundation
 
-//struct Post: Codable {
-//    let id: Int
-//}
-
 final public class Networking {
     
     // MARK: - init
@@ -26,7 +22,11 @@ final public class Networking {
     // MARK: - public
     
     public func getUserPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
-        let endpoint = CommunicationEndpoints.postsByUser(5)
+        guard let userID = userController.userId else {
+            failed()
+            return
+        }
+        let endpoint = CommunicationEndpoints.postsByUser(userID)
         guard let resource = Resource<[Post]>(url: endpoint.url) else {
             failed()
             return
