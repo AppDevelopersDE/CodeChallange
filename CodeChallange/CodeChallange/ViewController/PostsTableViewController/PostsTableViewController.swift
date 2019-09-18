@@ -52,12 +52,16 @@ class PostsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else {
-            fatalError("failed tp find matching cell - stop somthing is wrong")
+            fatalError("failed to find matching cell")
         }
         
         let cellViewModel = viewModel.getPostCellViewModel(at: indexPath.row)
-        cell.configure(viewModel: cellViewModel, didTapFavoriteButton: {
-            NSLog("update model and notofy viewMdoel about the change")
+        cell.configure(viewModel: cellViewModel, didTapFavoriteButton: { [weak self] in
+            guard let self = self else {
+                fatalError("somethng went wrong")
+            }
+            self.viewModel.toggleFavorite(cellViewModel)
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
         })
         return cell
     }

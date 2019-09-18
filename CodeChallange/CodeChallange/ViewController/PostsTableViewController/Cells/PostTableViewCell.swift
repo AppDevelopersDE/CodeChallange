@@ -37,6 +37,10 @@ class PostTableViewCell: UITableViewCell {
         self.didTapFavoriteButton = didTapFavoriteButton
     }
     
+    public func updateFavoriteState(viewModel: PostCellViewModel) {
+        favoriteButton.setImage(viewModel.favoriteImage, for: .normal)
+    }
+    
     // MARK: - private
     
     @IBOutlet private weak var favoriteButton: UIButton!

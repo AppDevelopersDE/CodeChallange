@@ -15,7 +15,7 @@ class ApplicationFlow: UINavigationController {
         self.userController = UserController()
         self.postNetworkPorviding = Networking(webservice: WebService(), userController: userController)
         // Todo load favorites from disk
-        self.favoritesProviding = Favorites(favorites: [ Post(userId: 1, id: 1, title: "Testdata", body: "Das ist ein Test") ])
+        self.favoritesProviding = Favorites(favorites: [])
         super.init(nibName: nil, bundle: nil)
     }
     
