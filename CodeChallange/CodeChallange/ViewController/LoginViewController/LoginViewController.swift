@@ -29,8 +29,6 @@ class LoginViewController: UIViewController {
         setupButtons()
     }
 
-    // MARK: - Protocol <#Name#>
-    
     // MARK: - public
     
     // MARK: - private
@@ -42,7 +40,7 @@ class LoginViewController: UIViewController {
     private let didLogin: () -> Void
 
     private func setupButtons() {
-        loginButton.setTitle(NSLocalizedString("Login.Button", comment: "Login Button to enter app"), for: .normal)
+        loginButton.setTitle("Login", for: .normal)
         loginButton.addTarget(self, action: #selector(didHitLoginButton), for: .touchUpInside)
     }
     

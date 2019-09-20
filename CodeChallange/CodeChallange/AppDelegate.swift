@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupComponents()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = ApplicationFlow(userController: userController, networkingProvider: networkingProvider, favoritesProvider: favoritesProvider)
+        self.window?.rootViewController = ApplicationFlow(userController: userController, networkingProvider: networkingPostsProvider, favoritesProvider: favoritesPostsProvider)
         self.window?.makeKeyAndVisible()
         
         // Override point for customization after application launch.
@@ -61,21 +61,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private var applicationFlow: ApplicationFlow!
     private var userController: UserController!
-    private var webservice: WebService!
-    private var networkingProvider: Networking!
-    private var favoritesProvider: Favorites!
+    private var networkingPostsProvider: PostsNetworking!
+    private var favoritesPostsProvider: PostsFavorites!
     
     private func setupComponents() {
         self.userController = UserController()
-        self.webservice = WebService()
-        self.networkingProvider = Networking(webservice: webservice, userController: userController)
+        self.networkingPostsProvider = PostsNetworking(webservice: WebService(), userController: userController)
         
         let jsonDecoder = JSONDecoder()
         if let data = loadFavoritesData(),
             let posts = try? jsonDecoder.decode([Post].self, from: data) {
-            self.favoritesProvider = Favorites(favorites: posts)
+            self.favoritesPostsProvider = PostsFavorites(favorites: posts)
         } else {
-            self.favoritesProvider = Favorites(favorites: [])
+            self.favoritesPostsProvider = PostsFavorites(favorites: [])
         }
     }
     
@@ -104,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         documentsFolder.appendPathComponent("favorites.json")
         
-        if let data = favoritesProvider.jsonData() {
+        if let data = favoritesPostsProvider.jsonData() {
             FileManager.default.createFile(atPath: documentsFolder.path, contents: data, attributes: nil)
         }
         

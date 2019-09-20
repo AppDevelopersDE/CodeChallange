@@ -15,19 +15,19 @@ enum CommunicationEndpoints {
     
     var url: URL {
         guard let baseURL = URL(string: "https://jsonplaceholder.typicode.com") else {
-            fatalError()
+            fatalError("Problem with URL")
         }
         
         switch self {
         case .allPosts:
             guard let url = URL(string: "/posts", relativeTo: baseURL) else {
-                fatalError()
+                fatalError("Problem with URL")
             }
             return url
             
         case .postsByUser(let userId):
             guard let url = URL(string: String(format: "/posts?userId=%i", userId), relativeTo: baseURL) else {
-                fatalError()
+                fatalError("Problem with URL")
             }
             return url
         }

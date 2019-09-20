@@ -12,15 +12,13 @@ final public class PostsViewModel {
     
     // MARK: - init
     
-    init(dataProvider: PostsProviding, favoritesProvider: MutatingPostProviding? = nil) {
+    init(dataProvider: GetPostsProtocol, favoritesProvider: MutatePostsProtocol? = nil) {
         self.dataProvider = dataProvider
         self.favoritesProvider = favoritesProvider
         self.cellViewModels = []
     }
     
     // MARK: - overrides
-    
-    // MARK: - Protocol <#Name#>
     
     // MARK: - public
     
@@ -36,7 +34,7 @@ final public class PostsViewModel {
         dataProvider.getPosts(
             success: { [weak self] (postModels) in
                 guard let self = self else {
-                    fatalError()
+                    return
                 }
                 self.cellViewModels = postModels.map { PostCellViewModel(model: $0, isFavorite: self.favoritesProvider?.contains($0) ?? false)}
                 completion()
@@ -70,8 +68,8 @@ final public class PostsViewModel {
     
     // MARK: - private
     
-    private let dataProvider: PostsProviding
-    private let favoritesProvider: MutatingPostProviding?
+    private let dataProvider: GetPostsProtocol
+    private let favoritesProvider: MutatePostsProtocol?
 
     private var cellViewModels: [PostCellViewModel]
 
