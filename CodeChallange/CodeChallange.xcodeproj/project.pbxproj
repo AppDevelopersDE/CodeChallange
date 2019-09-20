@@ -38,6 +38,7 @@
 		BA9A0FD02334DF8700F57024 /* User+Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FCF2334DF8700F57024 /* User+Fake.swift */; };
 		BA9A0FD22334E08400F57024 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FD12334E08400F57024 /* UserTests.swift */; };
 		BA9A0FD42334E12500F57024 /* ResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FD32334E12500F57024 /* ResourceTests.swift */; };
+		BA9A0FD62334E37E00F57024 /* EndpointsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FD52334E37E00F57024 /* EndpointsTests.swift */; };
 		BAE4A0522332CA6F00359F37 /* PostsFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE4A0512332CA6E00359F37 /* PostsFavorites.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,7 @@
 		BA9A0FCF2334DF8700F57024 /* User+Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Fake.swift"; sourceTree = "<group>"; };
 		BA9A0FD12334E08400F57024 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		BA9A0FD32334E12500F57024 /* ResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceTests.swift; sourceTree = "<group>"; };
+		BA9A0FD52334E37E00F57024 /* EndpointsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointsTests.swift; sourceTree = "<group>"; };
 		BAE4A0512332CA6E00359F37 /* PostsFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsFavorites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +248,7 @@
 				BA9A0FBD2334D81400F57024 /* Model */,
 				BA9A0FBE2334D83700F57024 /* PostsNetworking+Fake.swift */,
 				BA9A0FD32334E12500F57024 /* ResourceTests.swift */,
+				BA9A0FD52334E37E00F57024 /* EndpointsTests.swift */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 				BA9A0FCB2334DC4F00F57024 /* FileStorage+Fake.swift in Sources */,
 				BA9A0FBB2334D6A300F57024 /* PostsViewModelTests.swift in Sources */,
 				BA7F8FA0233014B2003AA50A /* CodeChallangeTests.swift in Sources */,
+				BA9A0FD62334E37E00F57024 /* EndpointsTests.swift in Sources */,
 				BA9A0FB72334D56200F57024 /* PostTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
