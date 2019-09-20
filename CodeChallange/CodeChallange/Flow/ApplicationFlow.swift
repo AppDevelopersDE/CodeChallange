@@ -11,7 +11,7 @@ import UIKit
 class ApplicationFlow: UINavigationController {
 
     // MARK: - init
-    init(userController: UserController, networkingProvider: Networking, favoritesProvider: Favorites) {
+    init(userController: UserController, networkingProvider: PostsNetworking, favoritesProvider: PostsFavorites) {
         self.userController = userController
         self.networkingProvider = networkingProvider
         self.favoritesProvider = favoritesProvider
@@ -39,8 +39,8 @@ class ApplicationFlow: UINavigationController {
     // MARK: - private
     
     private let userController: UserController
-    private let networkingProvider: Networking
-    private let favoritesProvider: Favorites
+    private let networkingProvider: PostsNetworking
+    private let favoritesProvider: PostsFavorites
     
     private func presentLoginViewController() {
         if ( userController.isLoggedIn) {

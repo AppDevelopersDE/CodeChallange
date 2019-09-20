@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupComponents()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = ApplicationFlow(userController: userController, networkingProvider: networkingProvider, favoritesProvider: favoritesProvider)
+        self.window?.rootViewController = ApplicationFlow(userController: userController, networkingProvider: networkingPostsProvider, favoritesProvider: favoritesPostsProvider)
         self.window?.makeKeyAndVisible()
         
         // Override point for customization after application launch.
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        favoritesProvider.save()
+        favoritesPostsProvider.save()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -62,14 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var applicationFlow: ApplicationFlow!
     private var userController: UserController!
 
-    private var networkingProvider: Networking!
-    private var favoritesProvider: Favorites!
+    private var networkingPostsProvider: PostsNetworking!
+    private var favoritesPostsProvider: PostsFavorites!
     
     private func setupComponents() {
         self.userController = UserController()
-        self.networkingProvider = Networking(webservice: WebService(), userController: userController)
+        self.networkingPostsProvider = PostsNetworking(webservice: WebService(), userController: userController)
         let storage = FileStorage(filename: "favorites.json")
-        self.favoritesProvider = Favorites(storage: storage)
+        self.favoritesPostsProvider = PostsFavorites(storage: storage)
     }
 
 }

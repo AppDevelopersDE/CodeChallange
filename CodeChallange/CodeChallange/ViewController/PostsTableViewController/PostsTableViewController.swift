@@ -12,7 +12,7 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init(dataProvider: PostsProviding, favoritesProvider: MutatingPostProviding? = nil) {
+    init(dataProvider: GetPostsProtocol, favoritesProvider: MutatePostsProtocol? = nil) {
         self.viewModel = PostsViewModel(dataProvider: dataProvider, favoritesProvider: favoritesProvider)
         super.init(style: .plain)
     }
@@ -49,13 +49,15 @@ class PostsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else {
-            fatalError("failed to find matching cell")
+            NSLog("ne cell found to dequeue - PostTableViewCell")
+            return UITableViewCell(style: .default, reuseIdentifier: "FallbackCell")
         }
         
         let cellViewModel = viewModel.getPostCellViewModel(at: indexPath.row)
         cell.configure(viewModel: cellViewModel, didTapFavoriteButton: { [weak self] in
             guard let self = self else {
-                fatalError("somethng went wrong")
+                NSLog("Something went wrong while create strong self")
+                return
             }
             self.viewModel.toggleFavorite(cellViewModel)
             self.tableView.reloadRows(at: [indexPath], with: .automatic)

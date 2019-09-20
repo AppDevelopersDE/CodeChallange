@@ -8,7 +8,7 @@
 
 import Foundation
 
-final public class Favorites: MutatingPostProviding {
+final public class PostsFavorites: MutatePostsProtocol {
     
     // MARK: - init
     
@@ -26,13 +26,13 @@ final public class Favorites: MutatingPostProviding {
     
     // MARK: - overrides
     
-    // MARK: - Protocol PostsProviding
+    // MARK: - Protocol GetPostsProtocol
     
     func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
         success(favorites)
     }
     
-    // MARK: - Protocol PostsProviding
+    // MARK: - Protocol GetPostsProtocol
 
     func addPost(_ post: Post) {
         if !favorites.contains(post) {

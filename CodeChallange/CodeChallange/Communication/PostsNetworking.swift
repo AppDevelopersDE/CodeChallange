@@ -1,14 +1,12 @@
 //
-//  Networking.swift
 //  CodeChallange
 //
 //  Created by Kai-Marcel Teuber on 16.09.19.
-//  Copyright © 2019 App-Developers.de. All rights reserved.
 //
 
 import Foundation
 
-protocol MutatingPostProviding: PostsProviding {
+protocol MutatePostsProtocol: GetPostsProtocol {
     
     func addPost(_ post: Post)
     func deletePost(_ post: Post)
@@ -16,13 +14,13 @@ protocol MutatingPostProviding: PostsProviding {
     
 }
 
-protocol PostsProviding {
+protocol GetPostsProtocol {
     
     func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void)
     
 }
 
-final public class Networking: PostsProviding {
+final public class PostsNetworking: GetPostsProtocol {
     
     // MARK: - init
     
