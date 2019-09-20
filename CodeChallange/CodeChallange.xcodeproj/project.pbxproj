@@ -26,6 +26,7 @@
 		BA7F8FC423302595003AA50A /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F8FC323302595003AA50A /* Networking.swift */; };
 		BA7F8FC923302C81003AA50A /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F8FC823302C81003AA50A /* Endpoints.swift */; };
 		BA7F8FCC2330321F003AA50A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7F8FCB2330321F003AA50A /* Post.swift */; };
+		BA9A0FB42334CBB900F57024 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FB32334CBB900F57024 /* FileStorage.swift */; };
 		BAE4A0522332CA6F00359F37 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE4A0512332CA6E00359F37 /* Favorites.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		BA7F8FC323302595003AA50A /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		BA7F8FC823302C81003AA50A /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		BA7F8FCB2330321F003AA50A /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		BA9A0FB32334CBB900F57024 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		BAE4A0512332CA6E00359F37 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 		BA7F8F89233014B1003AA50A /* CodeChallange */ = {
 			isa = PBXGroup;
 			children = (
+				BA9A0FB22334CBA100F57024 /* Persistance */,
 				BA7F8FBE23302257003AA50A /* Communication */,
 				BA7F8FB923301E02003AA50A /* Controller */,
 				BA7F8FAE233016FA003AA50A /* ViewController */,
@@ -200,6 +203,14 @@
 				BA7F8FCB2330321F003AA50A /* Post.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		BA9A0FB22334CBA100F57024 /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				BA9A0FB32334CBB900F57024 /* FileStorage.swift */,
+			);
+			path = Persistance;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +327,7 @@
 				BA7F8FAC2330153C003AA50A /* ApplicationFlow.swift in Sources */,
 				BA254E1B233184D900BDDDD0 /* PostsViewModel.swift in Sources */,
 				BA254E1E2331865900BDDDD0 /* PostCellViewModel.swift in Sources */,
+				BA9A0FB42334CBB900F57024 /* FileStorage.swift in Sources */,
 				BA7F8FC923302C81003AA50A /* Endpoints.swift in Sources */,
 				BA7F8F8B233014B1003AA50A /* AppDelegate.swift in Sources */,
 				BA7F8FCC2330321F003AA50A /* Post.swift in Sources */,

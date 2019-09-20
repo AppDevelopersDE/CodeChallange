@@ -12,8 +12,16 @@ final public class Favorites: MutatingPostProviding {
     
     // MARK: - init
     
-    init(favorites: [Post]) {
-        self.favorites = favorites
+    init(storage: FileStorage) {
+        self.storage = storage
+
+        let jsonDecoder = JSONDecoder()
+        if let data = storage.load() {
+            self.favorites = try! jsonDecoder.decode([Post].self, from: data)
+        } else {
+            NSLog("No data found on disc - let's init a ffresh one")
+            self.favorites = []
+        }
     }
     
     // MARK: - overrides
@@ -48,8 +56,18 @@ final public class Favorites: MutatingPostProviding {
     }
     
     // MARK: - public
+
+    public func save() {
+        let jsonEncoder = JSONEncoder()
+        guard let data = try? jsonEncoder.encode(favorites) else {
+            NSLog("failed to create data")
+            return
+        }
+        storage.save(data: data)
+    }
     
     // MARK: - private
     private var favorites: [Post]
+    private let storage: FileStorage
     
 }
