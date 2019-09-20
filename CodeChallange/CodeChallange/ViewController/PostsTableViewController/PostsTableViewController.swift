@@ -12,7 +12,7 @@ class PostsTableViewController: UITableViewController {
     
     // MARK: - init
     
-    init(dataProvider: PostsProviding, favoritesProvider: MutatingPostProviding? = nil) {
+    init(dataProvider: GetPostsProtocol, favoritesProvider: MutatePostsProtocol? = nil) {
         self.viewModel = PostsViewModel(dataProvider: dataProvider, favoritesProvider: favoritesProvider)
         super.init(style: .plain)
     }
@@ -55,7 +55,8 @@ class PostsTableViewController: UITableViewController {
         let cellViewModel = viewModel.getPostCellViewModel(at: indexPath.row)
         cell.configure(viewModel: cellViewModel, didTapFavoriteButton: { [weak self] in
             guard let self = self else {
-                fatalError("somethng went wrong")
+                NSLog("Something went wrong while create strong self")
+                return
             }
             self.viewModel.toggleFavorite(cellViewModel)
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
