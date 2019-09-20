@@ -12,13 +12,11 @@ final public class FileStorage {
 
     // MARK: - Init
 
-    init(filename: String) {
+    public init(filename: String) {
         self.filename = filename
     }
 
     // MARK: - Overrides
-
-    // MARK: - Protocol <#Name#>
 
     // MARK: - Public
 
@@ -38,13 +36,23 @@ final public class FileStorage {
         FileManager.default.createFile(atPath: fileURL.path, contents: data, attributes: nil)
     }
 
+    public func delete() {
+        guard let fileURL = filePathURL else {
+            NSLog("Filepath failed - stop")
+            return
+        }
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            try? FileManager.default.removeItem(atPath: fileURL.path)
+        }
+    }
+
     // MARK: - Internal
 
     // MARK: - Private
 
     private let filename: String
 
-    private lazy var filePathURL: URL? = {
+    internal lazy var filePathURL: URL? = {
         guard var documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             NSLog("Documents folder not found - stop here")
             return nil
@@ -52,8 +60,6 @@ final public class FileStorage {
 
         let fileURL = documentsFolder.appendingPathComponent(filename)
         return fileURL
-//        return documentsFolder.appendPathComponent("favorites.json")
-//        return FileManager.default.contents(atPath: documentsFolder.path)
     }()
 
 }

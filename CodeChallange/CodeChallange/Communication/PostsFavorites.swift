@@ -12,7 +12,7 @@ final public class PostsFavorites: MutatePostsProtocol {
     
     // MARK: - init
     
-    init(storage: FileStorage) {
+    public init(storage: FileStorage) {
         self.storage = storage
 
         let jsonDecoder = JSONDecoder()
@@ -28,31 +28,26 @@ final public class PostsFavorites: MutatePostsProtocol {
     
     // MARK: - Protocol GetPostsProtocol
     
-    func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
+    public func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
         success(favorites)
     }
     
     // MARK: - Protocol GetPostsProtocol
 
-    func addPost(_ post: Post) {
+    public func addPost(_ post: Post) {
         if !favorites.contains(post) {
             favorites.append(post)
         }
     }
     
-    func deletePost(_ post: Post) {
+    public func deletePost(_ post: Post) {
         if let index = favorites.firstIndex(of: post) {
             favorites.remove(at: index)
         }
     }
     
-    func contains(_ post: Post) -> Bool {
+    public func contains(_ post: Post) -> Bool {
         return favorites.firstIndex(of: post) != nil
-    }
-    
-    func jsonData() -> Data? {
-        let jsonEncoder = JSONEncoder()
-        return try? jsonEncoder.encode(favorites)
     }
     
     // MARK: - public
@@ -65,7 +60,7 @@ final public class PostsFavorites: MutatePostsProtocol {
         }
         storage.save(data: data)
     }
-    
+
     // MARK: - private
     private var favorites: [Post]
     private let storage: FileStorage
