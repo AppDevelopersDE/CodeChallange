@@ -11,7 +11,7 @@ import XCTest
 
 class PostTests: XCTestCase {
 
-    func testGIVEN_Post_THEN_CorrectInitialized() {
+    func testGIVEN_Post_THEN_ResultIsCorrectInitialized() {
         // GIVEN
         let post = Post.fake()
 
