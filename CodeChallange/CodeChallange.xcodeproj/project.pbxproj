@@ -33,6 +33,8 @@
 		BA9A0FC32334D98D00F57024 /* Post+Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FC22334D98D00F57024 /* Post+Fake.swift */; };
 		BA9A0FC52334D9E300F57024 /* UserControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FC42334D9E300F57024 /* UserControllerTests.swift */; };
 		BA9A0FC72334DBD300F57024 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FC62334DBD300F57024 /* User.swift */; };
+		BA9A0FCB2334DC4F00F57024 /* FileStorage+Fake.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FCA2334DC4F00F57024 /* FileStorage+Fake.swift */; };
+		BA9A0FCD2334DCD600F57024 /* FileStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FCC2334DCD600F57024 /* FileStorageTests.swift */; };
 		BAE4A0522332CA6F00359F37 /* PostsFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE4A0512332CA6E00359F37 /* PostsFavorites.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +79,8 @@
 		BA9A0FC22334D98D00F57024 /* Post+Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Post+Fake.swift"; sourceTree = "<group>"; };
 		BA9A0FC42334D9E300F57024 /* UserControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerTests.swift; sourceTree = "<group>"; };
 		BA9A0FC62334DBD300F57024 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		BA9A0FCA2334DC4F00F57024 /* FileStorage+Fake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileStorage+Fake.swift"; sourceTree = "<group>"; };
+		BA9A0FCC2334DCD600F57024 /* FileStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageTests.swift; sourceTree = "<group>"; };
 		BAE4A0512332CA6E00359F37 /* PostsFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsFavorites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +149,7 @@
 		BA7F8F9E233014B2003AA50A /* CodeChallangeTests */ = {
 			isa = PBXGroup;
 			children = (
+				BA9A0FC92334DC2F00F57024 /* Persistance */,
 				BA9A0FBC2334D80100F57024 /* Controller */,
 				BA9A0FB82334D60400F57024 /* ViewController */,
 				BA9A0FB52334D54500F57024 /* Communication */,
@@ -279,6 +284,15 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
+		BA9A0FC92334DC2F00F57024 /* Persistance */ = {
+			isa = PBXGroup;
+			children = (
+				BA9A0FCA2334DC4F00F57024 /* FileStorage+Fake.swift */,
+				BA9A0FCC2334DCD600F57024 /* FileStorageTests.swift */,
+			);
+			path = Persistance;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -406,8 +420,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA9A0FC32334D98D00F57024 /* Post+Fake.swift in Sources */,
+				BA9A0FCD2334DCD600F57024 /* FileStorageTests.swift in Sources */,
 				BA9A0FBF2334D83700F57024 /* PostsNetworking+Fake.swift in Sources */,
 				BA9A0FC52334D9E300F57024 /* UserControllerTests.swift in Sources */,
+				BA9A0FCB2334DC4F00F57024 /* FileStorage+Fake.swift in Sources */,
 				BA9A0FBB2334D6A300F57024 /* PostsViewModelTests.swift in Sources */,
 				BA7F8FA0233014B2003AA50A /* CodeChallangeTests.swift in Sources */,
 				BA9A0FB72334D56200F57024 /* PostTests.swift in Sources */,
