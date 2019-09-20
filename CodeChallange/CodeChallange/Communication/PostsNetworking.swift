@@ -20,6 +20,8 @@ protocol GetPostsProtocol {
     
 }
 
+
+
 final public class PostsNetworking: GetPostsProtocol {
     
     // MARK: - init

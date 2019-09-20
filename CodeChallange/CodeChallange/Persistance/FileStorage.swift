@@ -18,8 +18,6 @@ final public class FileStorage {
 
     // MARK: - Overrides
 
-    // MARK: - Protocol <#Name#>
-
     // MARK: - Public
 
     public func load() -> Data? {
@@ -52,8 +50,6 @@ final public class FileStorage {
 
         let fileURL = documentsFolder.appendingPathComponent(filename)
         return fileURL
-//        return documentsFolder.appendPathComponent("favorites.json")
-//        return FileManager.default.contents(atPath: documentsFolder.path)
     }()
 
 }
