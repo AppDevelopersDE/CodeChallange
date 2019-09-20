@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        saveFavoritesData()
+        favoritesPostsProvider.save()
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -61,53 +61,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private var applicationFlow: ApplicationFlow!
     private var userController: UserController!
+
     private var networkingPostsProvider: PostsNetworking!
     private var favoritesPostsProvider: PostsFavorites!
     
     private func setupComponents() {
         self.userController = UserController()
         self.networkingPostsProvider = PostsNetworking(webservice: WebService(), userController: userController)
-        
-        let jsonDecoder = JSONDecoder()
-        if let data = loadFavoritesData(),
-            let posts = try? jsonDecoder.decode([Post].self, from: data) {
-            self.favoritesPostsProvider = PostsFavorites(favorites: posts)
-        } else {
-            self.favoritesPostsProvider = PostsFavorites(favorites: [])
-        }
+        let storage = FileStorage(filename: "favorites.json")
+        self.favoritesPostsProvider = PostsFavorites(storage: storage)
     }
-    
-    private func loadFavoritesData() -> Data? {
-        guard var documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            fatalError()
-        }
-        
-        documentsFolder.appendPathComponent("favorites.json")
-        return FileManager.default.contents(atPath: documentsFolder.path)
-    }
-    
-    private func saveFavoritesData() {
-        guard var documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            fatalError()
-        }
-        
-        if !FileManager.default.fileExists(atPath: documentsFolder.path) {
-            do {
-                try FileManager.default.createDirectory(at: documentsFolder, withIntermediateDirectories: false, attributes: nil)
-            }
-            catch {
-                fatalError()
-            }
-        }
-        
-        documentsFolder.appendPathComponent("favorites.json")
-        
-        if let data = favoritesPostsProvider.jsonData() {
-            FileManager.default.createFile(atPath: documentsFolder.path, contents: data, attributes: nil)
-        }
-        
-    }
-
 
 }
 
