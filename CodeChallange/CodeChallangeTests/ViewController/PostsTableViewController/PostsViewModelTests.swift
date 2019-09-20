@@ -9,7 +9,6 @@
 import XCTest
 @testable import CodeChallange
 
-
 class PostsViewModelTests: XCTestCase {
 
     func testGIVEN_PostsViewModel_WHEN_loadAndCount_THEN_ResultIsEqualCountPostsGiven() {
@@ -54,6 +53,5 @@ class PostsViewModelTests: XCTestCase {
         XCTAssertFalse(updatedCellVieModel.isFavorite)
     }
 
-
-
 }
+
