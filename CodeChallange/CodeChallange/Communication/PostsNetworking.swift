@@ -6,7 +6,7 @@
 
 import Foundation
 
-protocol MutatePostsProtocol: GetPostsProtocol {
+public protocol MutatePostsProtocol: GetPostsProtocol {
     
     func addPost(_ post: Post)
     func deletePost(_ post: Post)
@@ -14,7 +14,7 @@ protocol MutatePostsProtocol: GetPostsProtocol {
     
 }
 
-protocol GetPostsProtocol {
+public protocol GetPostsProtocol {
     
     func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void)
     
