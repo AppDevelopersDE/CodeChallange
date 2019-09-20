@@ -37,4 +37,21 @@ class FileStorageTests: XCTestCase {
         XCTAssertEqual(data, readData)
     }
 
+    func testGIVEN_FileStorage_WHEN_SaveDeleteLoad_THEN_resultIsNil() {
+        // GIVEN
+        let storage = FileStorage.fake()
+        let posts = [Post.fake(), Post.fake()]
+        let jsonEncoder = JSONEncoder()
+        let data = try! jsonEncoder.encode(posts)
+
+        // WHEN
+        storage.save(data: data)
+        storage.delete()
+        let readData = storage.load()
+
+        // THEN
+        XCTAssertNil(readData)
+    }
+
+
 }
