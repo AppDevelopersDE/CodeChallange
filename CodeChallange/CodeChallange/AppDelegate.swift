@@ -71,46 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storage = FileStorage(filename: "favorites.json")
         self.favoritesProvider = Favorites(storage: storage)
     }
-//        let jsonDecoder = JSONDecoder()
-//        if let data = loadFavoritesData(),
-//            let posts = try? jsonDecoder.decode([Post].self, from: data) {
-//            self.favoritesProvider = Favorites(favorites: posts)
-//        } else {
-//            self.favoritesProvider = Favorites(favorites: [])
-//        }
-//    }
-//
-//    private func loadFavoritesData() -> Data? {
-//        guard var documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//            fatalError()
-//        }
-//
-//        documentsFolder.appendPathComponent("favorites.json")
-//        return FileManager.default.contents(atPath: documentsFolder.path)
-//    }
-//
-//    private func saveFavoritesData() {
-//        guard var documentsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//            fatalError()
-//        }
-//
-//        if !FileManager.default.fileExists(atPath: documentsFolder.path) {
-//            do {
-//                try FileManager.default.createDirectory(at: documentsFolder, withIntermediateDirectories: false, attributes: nil)
-//            }
-//            catch {
-//                fatalError()
-//            }
-//        }
-//
-//        documentsFolder.appendPathComponent("favorites.json")
-//
-//        if let data = favoritesProvider.jsonData() {
-//            FileManager.default.createFile(atPath: documentsFolder.path, contents: data, attributes: nil)
-//        }
-//
-//    }
-
 
 }
 

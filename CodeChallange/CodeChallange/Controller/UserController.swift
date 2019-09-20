@@ -23,8 +23,6 @@ final class UserController {
     
     // MARK: - overrides
     
-    // MARK: - Protocol <#Name#>
-    
     // MARK: - public
     
     public var isLoggedIn: Bool {
