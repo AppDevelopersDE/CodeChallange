@@ -49,7 +49,8 @@ class PostsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostTableViewCell") as? PostTableViewCell else {
-            fatalError("failed to find matching cell")
+            NSLog("ne cell found to dequeue - PostTableViewCell")
+            return UITableViewCell(style: .default, reuseIdentifier: "FallbackCell")
         }
         
         let cellViewModel = viewModel.getPostCellViewModel(at: indexPath.row)

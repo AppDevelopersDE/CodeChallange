@@ -34,7 +34,7 @@ final public class PostsViewModel {
         dataProvider.getPosts(
             success: { [weak self] (postModels) in
                 guard let self = self else {
-                    fatalError()
+                    return
                 }
                 self.cellViewModels = postModels.map { PostCellViewModel(model: $0, isFavorite: self.favoritesProvider?.contains($0) ?? false)}
                 completion()
