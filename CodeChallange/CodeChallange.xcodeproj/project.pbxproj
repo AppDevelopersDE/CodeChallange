@@ -39,6 +39,7 @@
 		BA9A0FD22334E08400F57024 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FD12334E08400F57024 /* UserTests.swift */; };
 		BA9A0FD42334E12500F57024 /* ResourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FD32334E12500F57024 /* ResourceTests.swift */; };
 		BA9A0FD62334E37E00F57024 /* EndpointsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FD52334E37E00F57024 /* EndpointsTests.swift */; };
+		BA9A0FD82334E4CB00F57024 /* PostsFavoritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9A0FD72334E4CB00F57024 /* PostsFavoritesTests.swift */; };
 		BAE4A0522332CA6F00359F37 /* PostsFavorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAE4A0512332CA6E00359F37 /* PostsFavorites.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,7 @@
 		BA9A0FD12334E08400F57024 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		BA9A0FD32334E12500F57024 /* ResourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceTests.swift; sourceTree = "<group>"; };
 		BA9A0FD52334E37E00F57024 /* EndpointsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointsTests.swift; sourceTree = "<group>"; };
+		BA9A0FD72334E4CB00F57024 /* PostsFavoritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsFavoritesTests.swift; sourceTree = "<group>"; };
 		BAE4A0512332CA6E00359F37 /* PostsFavorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsFavorites.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +251,7 @@
 				BA9A0FBE2334D83700F57024 /* PostsNetworking+Fake.swift */,
 				BA9A0FD32334E12500F57024 /* ResourceTests.swift */,
 				BA9A0FD52334E37E00F57024 /* EndpointsTests.swift */,
+				BA9A0FD72334E4CB00F57024 /* PostsFavoritesTests.swift */,
 			);
 			path = Communication;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				BA9A0FC32334D98D00F57024 /* Post+Fake.swift in Sources */,
 				BA9A0FCD2334DCD600F57024 /* FileStorageTests.swift in Sources */,
 				BA9A0FD42334E12500F57024 /* ResourceTests.swift in Sources */,
+				BA9A0FD82334E4CB00F57024 /* PostsFavoritesTests.swift in Sources */,
 				BA9A0FD22334E08400F57024 /* UserTests.swift in Sources */,
 				BA9A0FBF2334D83700F57024 /* PostsNetworking+Fake.swift in Sources */,
 				BA9A0FC52334D9E300F57024 /* UserControllerTests.swift in Sources */,

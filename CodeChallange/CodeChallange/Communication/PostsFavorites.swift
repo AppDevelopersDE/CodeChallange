@@ -12,7 +12,7 @@ final public class PostsFavorites: MutatePostsProtocol {
     
     // MARK: - init
     
-    init(storage: FileStorage) {
+    public init(storage: FileStorage) {
         self.storage = storage
 
         let jsonDecoder = JSONDecoder()
@@ -28,7 +28,7 @@ final public class PostsFavorites: MutatePostsProtocol {
     
     // MARK: - Protocol GetPostsProtocol
     
-    func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
+    public func getPosts(success: @escaping ([Post]) -> Void, failed: () -> Void) {
         success(favorites)
     }
     
